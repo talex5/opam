@@ -1980,6 +1980,7 @@ let check_and_run_external_commands () =
       && List.for_all (fun (_,info) -> Term.name info <> name) commands
     then
     (* No such command, check if there is a matching plugin *)
+    let opam = Filename.basename opam in
     let command = opam ^ "-" ^ name in
     let t = OpamState.load_env_state "plugins" in
     let env = OpamState.get_full_env ~force_path:false t in
